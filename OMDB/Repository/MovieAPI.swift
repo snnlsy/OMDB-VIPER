@@ -47,25 +47,18 @@ extension MovieAPI: MovieAPIProtocol {
             output?.movieAPI(self, didRetrieveError: .invalidURL)
             return
         }
-        URLSession.shared.dataTask(
-            with: url,
-            completionHandler: { [weak self] (data, response, error) in
-                guard let self else { return }
-                if let _ = error {
-                    self.output?.movieAPI(self, didRetrieveError: .responseFailed)
+        NetworkService.shared.fetchData(url: url) { [weak self] dataResponse in
+            guard let self else { return }
+            switch dataResponse {
+            case .success(let data):
+                guard let response: MovieListResponse = data.decodeData() else {
+                    self.output?.movieAPI(self, didRetrieveError: .decodeError)
                     return
                 }
-                guard let _ = response else {
-                    self.output?.movieAPI(self, didRetrieveError: .responseFailed)
-                    return
-                }
-                guard let data = data else {
-                    self.output?.movieAPI(self, didRetrieveError: .invalidData)
-                    return
-                }
-                let response = try? JSONDecoder().decode(MovieListResponse.self, from: data)
                 self.output?.movieAPI(self, didRetrieveMovieList: response)
+            case .failure(let error):
+                self.output?.movieAPI(self, didRetrieveError: error)
             }
-        ).resume()
+        }
     }
 }

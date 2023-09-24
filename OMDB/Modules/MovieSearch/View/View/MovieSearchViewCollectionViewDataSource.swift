@@ -17,14 +17,12 @@ final class MovieSearchViewCollectionViewDataSource: NSObject, UICollectionViewD
     }
     
     private let viewModel: MovieSearchTableViewViewModel
-    
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         let cell: MovieSearchCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.backgroundColor = .blue
 
