@@ -42,6 +42,7 @@
 		0EA43B962AC0AD40002C68F5 /* MovieListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43B952AC0AD40002C68F5 /* MovieListRequest.swift */; };
 		0EA43B982AC0B5BF002C68F5 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43B972AC0B5BF002C68F5 /* Data+Extension.swift */; };
 		0EA43B9E2AC0E179002C68F5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43B9D2AC0E179002C68F5 /* NetworkService.swift */; };
+		0EA43BA72AC0EEA4002C68F5 /* CacheableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BA62AC0EEA4002C68F5 /* CacheableImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		0EA43B952AC0AD40002C68F5 /* MovieListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRequest.swift; sourceTree = "<group>"; };
 		0EA43B972AC0B5BF002C68F5 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		0EA43B9D2AC0E179002C68F5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		0EA43BA62AC0EEA4002C68F5 /* CacheableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheableImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			children = (
 				0EA43B072ABE30AE002C68F5 /* App */,
 				0EA43B2D2ABF18B7002C68F5 /* Modules */,
+				0EA43BA52AC0EE57002C68F5 /* Component */,
 				0EA43B8C2AC0A73D002C68F5 /* Repository */,
 				0EA43B9C2AC0E0E9002C68F5 /* Service */,
 				0EA43B122ABE35BC002C68F5 /* Extension */,
@@ -361,6 +364,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		0EA43BA52AC0EE57002C68F5 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				0EA43BA62AC0EEA4002C68F5 /* CacheableImageView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -450,6 +461,7 @@
 				0EA43B412ABF3EFA002C68F5 /* MovieSearchEntity.swift in Sources */,
 				0EA43AF12ABE2A0A002C68F5 /* AppDelegate.swift in Sources */,
 				0EA43B4B2ABF9AC4002C68F5 /* MovieDetailView.swift in Sources */,
+				0EA43BA72AC0EEA4002C68F5 /* CacheableImageView.swift in Sources */,
 				0EA43B452ABF45D4002C68F5 /* MovieSearchViewTableViewDelegate.swift in Sources */,
 				0EA43B2F2ABF231C002C68F5 /* MovieSearchInteractor.swift in Sources */,
 				0EA43B1D2ABEE382002C68F5 /* MovieSearchBuilder.swift in Sources */,
