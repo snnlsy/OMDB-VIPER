@@ -25,8 +25,7 @@ final class MovieSearchViewCollectionViewDataSource: NSObject, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier,
-                                                      for: indexPath)
+        let cell: MovieSearchCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.backgroundColor = .blue
 
         return cell

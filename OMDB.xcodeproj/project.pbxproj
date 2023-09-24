@@ -36,6 +36,7 @@
 		0EA43B482ABF73EC002C68F5 /* MovieSearchViewCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43B472ABF73EC002C68F5 /* MovieSearchViewCollectionViewDataSource.swift */; };
 		0EA43B4B2ABF9AC4002C68F5 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43B4A2ABF9AC4002C68F5 /* MovieDetailView.swift */; };
 		0EA43B892AC0866E002C68F5 /* MovieSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43B882AC0866E002C68F5 /* MovieSearchTableViewCell.swift */; };
+		0EA43B8B2AC08D79002C68F5 /* MovieSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43B8A2AC08D79002C68F5 /* MovieSearchCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		0EA43B472ABF73EC002C68F5 /* MovieSearchViewCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchViewCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		0EA43B4A2ABF9AC4002C68F5 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		0EA43B882AC0866E002C68F5 /* MovieSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchTableViewCell.swift; sourceTree = "<group>"; };
+		0EA43B8A2AC08D79002C68F5 /* MovieSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA43B882AC0866E002C68F5 /* MovieSearchTableViewCell.swift */,
+				0EA43B8A2AC08D79002C68F5 /* MovieSearchCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				0EA43B2A2ABF1880002C68F5 /* MovieDetailPresenter.swift in Sources */,
 				0EA43B432ABF436B002C68F5 /* MovieSearchTableViewViewModel.swift in Sources */,
 				0EA43B482ABF73EC002C68F5 /* MovieSearchViewCollectionViewDataSource.swift in Sources */,
+				0EA43B8B2AC08D79002C68F5 /* MovieSearchCollectionViewCell.swift in Sources */,
 				0EA43B142ABE35D1002C68F5 /* UIView+Extension.swift in Sources */,
 				0EA43B262ABF1853002C68F5 /* MovieDetailViewController.swift in Sources */,
 				0EA43B3E2ABF3CEA002C68F5 /* MovieSearchViewTableViewDataSource.swift in Sources */,

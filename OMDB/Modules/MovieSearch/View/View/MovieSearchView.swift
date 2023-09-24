@@ -124,7 +124,7 @@ extension MovieSearchView {
         
         collectionViewDataSource = MovieSearchViewCollectionViewDataSource(viewModel: viewModel)
         collectionView.dataSource = collectionViewDataSource
-        collectionView.register(UICollectionViewCell.self)
+        collectionView.register(MovieSearchCollectionViewCell.self)
     }
 }
 
