@@ -25,4 +25,20 @@ final class MovieDetailView: UIView {
     }
     
     weak var delegate: MovieDetailViewDelegate?
+    
+    lazy var stackView: UIStackView = .build { stackView in
+        stackView.axis = .vertical
+    }
+    
+    lazy var posterImageView: UIImageView = .build { imageView in
+        
+    }
+    
+    lazy var titleLabel: UILabel = .build { label in
+        
+    }
+    
+    lazy var yearLabel: UILabel = .build { label in
+        
+    }
 }
