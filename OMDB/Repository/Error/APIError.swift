@@ -6,6 +6,8 @@
 //
 
 
+// MARK: - APIError
+
 enum APIError: Error {
     case responseFailed
     case invalidURL

@@ -9,7 +9,7 @@
 // MARK: - MovieListResponse
 
 struct MovieListResponse: Codable {
-    let search: [SearchRawModel?]
+    let search: [SearchModel?]
     let totalResults: String?
     let response: String?
 
@@ -21,9 +21,9 @@ struct MovieListResponse: Codable {
 }
 
 
-// MARK: - Search
+// MARK: - SearchModel
 
-struct SearchRawModel: Codable {
+struct SearchModel: Codable {
     let title: String?
     let year: String?
     let imdbID: String?

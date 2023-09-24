@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+// MARK: - MovieListRequest
+
 struct MovieListRequest {
     let query: String
     let page: Int

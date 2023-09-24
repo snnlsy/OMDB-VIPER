@@ -13,10 +13,15 @@ import UIKit
 enum MovieSearchBuilder {
     
     static func build() -> UIViewController {
-        let presenter = MovieSearchPresenter()
+        let movieAPI = MovieAPI()
+        let interactor = MovieSearchInteractor(movieAPI: movieAPI)
+        let presenter = MovieSearchPresenter(interactor: interactor)
         let view = MovieSearchViewController(presenter: presenter)
         let navigationController = UINavigationController(rootViewController: view)
         let router = MovieSearchRouter(navigationController: navigationController)
+
+        movieAPI.output = interactor
+        interactor.output = presenter
         
         presenter.view = view
         presenter.router = router

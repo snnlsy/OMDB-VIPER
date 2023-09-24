@@ -27,10 +27,11 @@ final class MovieSearchPresenter {
     
     private var viewModel: MovieSearchTableViewViewModel
     var router: MovieSearchRouterProtocol?
+    let interactor: MovieSearchInteractorProtocol
     
-    init() {
+    init(interactor: MovieSearchInteractorProtocol) {
+        self.interactor = interactor
         viewModel = .init()
-//        self.router = router
     }
 }
 
@@ -49,6 +50,27 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
         with viewModel: MovieSearchTableViewViewModel
     ) {
         print(indexPath)
-        router?.routeToMovieDetail(with: MovieSearchEntity(title: "", imdbId: "", type: "", poster: ""))
+//        router?.routeToMovieDetail(with: MovieSearchEntity(title: "", imdbId: "", type: "", poster: ""))
+        interactor.retrieveMovieList(query: "hello", page: 1)
+    }
+}
+
+
+// MARK: - MovieSearchInteractorOutput Implementation
+
+extension MovieSearchPresenter: MovieSearchInteractorOutputProtocol {
+
+    func movieSearchInteractor(
+        _ api: MovieSearchInteractorProtocol,
+        didRetrieveMovieList response: MovieListResponse?
+    ) {
+        print(response)
+    }
+
+    func movieSearchInteractor(
+        _ api: MovieSearchInteractorProtocol,
+        didRetrieveError error: APIError
+    ) {
+        print(error)
     }
 }
