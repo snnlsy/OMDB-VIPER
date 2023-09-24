@@ -44,7 +44,7 @@ final class MovieSearchView: UIView {
     }
     
     private lazy var tableView: UITableView = .build { [weak self] tableView in
-        tableView.register(UITableViewCell.self)
+        tableView.register(MovieSearchTableViewCell.self)
     }
   
     private lazy var collectionView: UICollectionView = {

@@ -23,7 +23,7 @@ final class MovieSearchViewTableViewDataSource: NSObject, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell: MovieSearchTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         cell.textLabel?.text = "deneme" + String(indexPath.row)
         return cell
     }
