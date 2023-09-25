@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - MovieSearchViewControllerProtocol
 
-protocol MovieSearchViewControllerProtocol: AnyObject {
+protocol MovieSearchViewControllerProtocol: AnyObject, LoadingProtocol {
     func configureLayout()
     func configure(with viewModel: MovieSearchTableViewViewModel)
 }
@@ -18,7 +18,7 @@ protocol MovieSearchViewControllerProtocol: AnyObject {
 
 // MARK: - MovieSearchViewController
 
-final class MovieSearchViewController: UIViewController {
+final class MovieSearchViewController: LoadingViewController {
     
     init(presenter: MovieSearchPresenterProtocol) {
         self.presenter = presenter
@@ -55,6 +55,15 @@ extension MovieSearchViewController {
 // MARK: - MovieSearchViewControllerProtocol Implementation
 
 extension MovieSearchViewController: MovieSearchViewControllerProtocol {
+
+    func showLoading() {
+        showLoadingIndicator()
+    }
+    
+    func hideLoading() {
+        hideLoadingIndicator()
+    }
+    
     func configureLayout() {
         movieSearchView.backgroundColor = .red
         navigationItem.title = "Movie"

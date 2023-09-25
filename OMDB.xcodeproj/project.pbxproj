@@ -43,6 +43,8 @@
 		0EA43B982AC0B5BF002C68F5 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43B972AC0B5BF002C68F5 /* Data+Extension.swift */; };
 		0EA43B9E2AC0E179002C68F5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43B9D2AC0E179002C68F5 /* NetworkService.swift */; };
 		0EA43BA72AC0EEA4002C68F5 /* CacheableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BA62AC0EEA4002C68F5 /* CacheableImageView.swift */; };
+		0EA43BB32AC21EB3002C68F5 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB22AC21EB3002C68F5 /* LoadingViewController.swift */; };
+		0EA43BB52AC22060002C68F5 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB42AC22060002C68F5 /* LoadingProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,8 @@
 		0EA43B972AC0B5BF002C68F5 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		0EA43B9D2AC0E179002C68F5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		0EA43BA62AC0EEA4002C68F5 /* CacheableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheableImageView.swift; sourceTree = "<group>"; };
+		0EA43BB22AC21EB3002C68F5 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		0EA43BB42AC22060002C68F5 /* LoadingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				0EA43BA52AC0EE57002C68F5 /* Component */,
 				0EA43B8C2AC0A73D002C68F5 /* Repository */,
 				0EA43B9C2AC0E0E9002C68F5 /* Service */,
+				0EA43B362ABF3800002C68F5 /* Protocol */,
 				0EA43B122ABE35BC002C68F5 /* Extension */,
 				0EA43AF92ABE2A0B002C68F5 /* Assets.xcassets */,
 				0EA43AFB2ABE2A0B002C68F5 /* LaunchScreen.storyboard */,
@@ -192,7 +197,6 @@
 				0EA43B392ABF38DC002C68F5 /* UITableView+Extension.swift */,
 				0EA43B3B2ABF38F5002C68F5 /* UITableViewCell+Extension.swift */,
 				0EA43B972AC0B5BF002C68F5 /* Data+Extension.swift */,
-				0EA43B362ABF3800002C68F5 /* Protocol */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -289,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA43B372ABF3816002C68F5 /* ReusableViewProtocol.swift */,
+				0EA43BB42AC22060002C68F5 /* LoadingProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA43BA62AC0EEA4002C68F5 /* CacheableImageView.swift */,
+				0EA43BB22AC21EB3002C68F5 /* LoadingViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -462,11 +468,13 @@
 				0EA43AF12ABE2A0A002C68F5 /* AppDelegate.swift in Sources */,
 				0EA43B4B2ABF9AC4002C68F5 /* MovieDetailView.swift in Sources */,
 				0EA43BA72AC0EEA4002C68F5 /* CacheableImageView.swift in Sources */,
+				0EA43BB52AC22060002C68F5 /* LoadingProtocol.swift in Sources */,
 				0EA43B452ABF45D4002C68F5 /* MovieSearchViewTableViewDelegate.swift in Sources */,
 				0EA43B2F2ABF231C002C68F5 /* MovieSearchInteractor.swift in Sources */,
 				0EA43B1D2ABEE382002C68F5 /* MovieSearchBuilder.swift in Sources */,
 				0EA43B892AC0866E002C68F5 /* MovieSearchTableViewCell.swift in Sources */,
 				0EA43B332ABF37AA002C68F5 /* UICollectionViewCell+Extension.swift in Sources */,
+				0EA43BB32AC21EB3002C68F5 /* LoadingViewController.swift in Sources */,
 				0EA43B3A2ABF38DC002C68F5 /* UITableView+Extension.swift in Sources */,
 				0EA43B2C2ABF1891002C68F5 /* MovieDetailRouter.swift in Sources */,
 				0EA43B242ABF182D002C68F5 /* MovieDetailBuilder.swift in Sources */,
