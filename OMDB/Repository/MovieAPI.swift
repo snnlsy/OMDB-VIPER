@@ -11,7 +11,10 @@ import Foundation
 // MARK: - MovieRepositoryProtocol
 
 protocol MovieAPIProtocol {
-    func getMovieList(with request: MovieListRequest)
+    func getMovieList(
+        with request: MovieListRequest,
+        movieListType: MovieSearchViewModel.MovieListType
+    )
 }
 
 
@@ -20,6 +23,7 @@ protocol MovieAPIProtocol {
 protocol MovieAPIOutputProtocol: AnyObject {
     func movieAPI(
         _ api: MovieAPIProtocol,
+        movieListType: MovieSearchViewModel.MovieListType,
         didRetrieveMovieList response: MovieListResponse?
     )
     
@@ -42,7 +46,10 @@ final class MovieAPI {
 
 extension MovieAPI: MovieAPIProtocol {
     
-    func getMovieList(with request: MovieListRequest) {
+    func getMovieList(
+        with request: MovieListRequest,
+        movieListType: MovieSearchViewModel.MovieListType
+    ) {
         guard let url = request.url else {
             output?.movieAPI(self, didRetrieveError: .invalidURL)
             return
@@ -57,7 +64,7 @@ extension MovieAPI: MovieAPIProtocol {
                 }
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
-                    self.output?.movieAPI(self, didRetrieveMovieList: response)
+                    self.output?.movieAPI(self, movieListType: movieListType, didRetrieveMovieList: response)
                 }
             case .failure(let error):
                 self.output?.movieAPI(self, didRetrieveError: error)

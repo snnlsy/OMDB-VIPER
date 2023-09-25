@@ -10,21 +10,21 @@ import UIKit
 
 // MARK: - MovieSearchViewTableViewDataSource
 
-final class MovieSearchViewTableViewDataSource: NSObject, UITableViewDataSource {
+final class MovieSearchTableViewDataSource: NSObject, UITableViewDataSource {
     
-    init(viewModel: MovieSearchTableViewViewModel) {
+    init(viewModel: MovieSearchViewModel) {
         self.viewModel = viewModel
     }
     
-    private let viewModel: MovieSearchTableViewViewModel
+    private let viewModel: MovieSearchViewModel
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.movieList.count
+        return viewModel.tableViewMovieList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MovieSearchTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.configure(with: viewModel.movieList[indexPath.row])
+        cell.configure(with: viewModel.tableViewMovieList[indexPath.row])
         return cell
     }
 }

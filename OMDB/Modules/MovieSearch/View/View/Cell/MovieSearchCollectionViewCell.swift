@@ -44,7 +44,18 @@ extension MovieSearchCollectionViewCell {
     
     private func setupLayout() {
         imageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(Spacing.small)
         }
     }
 }
+
+
+// MARK: - MovieSearchCollectionViewCell Configure
+
+extension MovieSearchCollectionViewCell {
+    
+    func configure(with entity: MovieEntity) {
+        imageView.setImage(with: entity.poster)
+    }
+}
+

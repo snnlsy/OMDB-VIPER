@@ -14,7 +14,11 @@ protocol MovieSearchPresenterProtocol {
     func viewDidLoad()
     func didSelectTableView(
         at indexPath: IndexPath,
-        with viewModel: MovieSearchTableViewViewModel
+        with viewModel: MovieSearchViewModel
+    )
+    func didSelectCollectionView(
+        at indexPath: IndexPath,
+        with viewModel: MovieSearchViewModel
     )
 }
 
@@ -25,9 +29,11 @@ final class MovieSearchPresenter {
     
     weak var view: MovieSearchViewControllerProtocol?
     
-    private var viewModel: MovieSearchTableViewViewModel
+    private var viewModel: MovieSearchViewModel
     var router: MovieSearchRouterProtocol?
     let interactor: MovieSearchInteractorProtocol
+    
+    let group = DispatchGroup()
     
     init(interactor: MovieSearchInteractorProtocol) {
         self.interactor = interactor
@@ -44,17 +50,31 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
         view?.showLoading()
         view?.configureLayout()
         
+        group.enter()
+        interactor.retrieveMovieList(query: "Star", page: 1, movieListType: .tableView)
         
-        interactor.retrieveMovieList(query: "Star", page: 1)
+        group.enter()
+        interactor.retrieveMovieList(query: "Comedy", page: 1, movieListType: .collectionView)
 
+        group.notify(queue: .main) { [weak self] in
+            guard let self else { return }
+            self.view?.hideLoading()
+            self.view?.configure(with: self.viewModel)
+        }
     }
     
     func didSelectTableView(
         at indexPath: IndexPath,
-        with viewModel: MovieSearchTableViewViewModel
+        with viewModel: MovieSearchViewModel
     ) {
-        print(indexPath)
-//        router?.routeToMovieDetail(with: MovieSearchEntity(title: "", imdbId: "", type: "", poster: ""))
+        router?.routeToMovieDetail(with: viewModel.tableViewMovieList[indexPath.row])
+    }
+    
+    func didSelectCollectionView(
+        at indexPath: IndexPath,
+        with viewModel: MovieSearchViewModel
+    ) {
+        router?.routeToMovieDetail(with: viewModel.collectionViewMovieList[indexPath.row])
     }
 }
 
@@ -65,16 +85,19 @@ extension MovieSearchPresenter: MovieSearchInteractorOutputProtocol {
 
     func movieSearchInteractor(
         _ api: MovieSearchInteractorProtocol,
+        movieListType: MovieSearchViewModel.MovieListType,
         didRetrieveMovieList response: MovieListResponse?
     ) {
-        view?.hideLoading()
-        
+        group.leave()
         response?.search.forEach({ model in
-            var model: MovieSearchEntity = .init(title: model?.title, poster: model?.poster)
-            viewModel.movieList.append(model)
+            let model: MovieEntity = .init(title: model?.title, poster: model?.poster)
+            switch movieListType {
+            case .tableView:
+                viewModel.tableViewMovieList.append(model)
+            case .collectionView:
+                viewModel.collectionViewMovieList.append(model)
+            }
         })
-        
-        view?.configure(with: viewModel)
     }
 
     func movieSearchInteractor(

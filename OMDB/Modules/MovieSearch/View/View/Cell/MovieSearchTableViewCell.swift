@@ -62,7 +62,7 @@ extension MovieSearchTableViewCell {
 
 extension MovieSearchTableViewCell {
     
-    func configure(with entity: MovieSearchEntity) {
+    func configure(with entity: MovieEntity) {
         posterImageView.setImage(with: entity.poster)
         movieNameLabel.text = entity.title
     }

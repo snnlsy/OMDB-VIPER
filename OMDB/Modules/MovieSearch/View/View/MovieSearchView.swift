@@ -14,8 +14,14 @@ import SnapKit
 protocol MovieSearchViewDelegate: AnyObject {
     func movieSearchView(
         _ view: MovieSearchView,
-        didSelectItemAt indexPath: IndexPath,
-        with viewModel: MovieSearchTableViewViewModel
+        didSelectTableViewItemAt indexPath: IndexPath,
+        with viewModel: MovieSearchViewModel
+    )
+    
+    func movieSearchView(
+        _ view: MovieSearchView,
+        didSelectCollectionViewItemAt indexPath: IndexPath,
+        with viewModel: MovieSearchViewModel
     )
 }
 
@@ -35,9 +41,10 @@ final class MovieSearchView: UIView {
     
     weak var delegate: MovieSearchViewDelegate?
     
-    private let tableViewDelegate = MovieSearchViewTableViewDelegate()
-    private var tableViewDataSource: MovieSearchViewTableViewDataSource?
-    private var collectionViewDataSource: MovieSearchViewCollectionViewDataSource?
+    private let tableViewDelegate = MovieSearchTableViewDelegate()
+    private var tableViewDataSource: MovieSearchTableViewDataSource?
+    private let collectionViewDelegate = MovieSearchCollectionViewDelegate()
+    private var collectionViewDataSource: MovieSearchCollectionViewDataSource?
 
     private lazy var searchBar: UISearchBar = .build { searchBar in
         searchBar.delegate = self
@@ -97,13 +104,13 @@ extension MovieSearchView {
         
         tableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(300)
+            make.bottom.equalTo(collectionView.snp.top)
+            make.horizontalEdges.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(tableView.snp.bottom)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(200)
         }
     }
@@ -114,8 +121,8 @@ extension MovieSearchView {
 
 extension MovieSearchView {
     
-    func configure(with viewModel: MovieSearchTableViewViewModel) {
-        tableViewDataSource = MovieSearchViewTableViewDataSource(viewModel: viewModel)
+    func configure(with viewModel: MovieSearchViewModel) {
+        tableViewDataSource = MovieSearchTableViewDataSource(viewModel: viewModel)
         tableView.dataSource = tableViewDataSource
         tableView.delegate = tableViewDelegate
         tableViewDelegate.output = self
@@ -123,9 +130,13 @@ extension MovieSearchView {
         tableView.reloadData()
         
         
-        collectionViewDataSource = MovieSearchViewCollectionViewDataSource(viewModel: viewModel)
+        collectionViewDataSource = MovieSearchCollectionViewDataSource(viewModel: viewModel)
         collectionView.dataSource = collectionViewDataSource
+        collectionView.delegate = collectionViewDelegate
+        collectionViewDelegate.output = self
         collectionView.register(MovieSearchCollectionViewCell.self)
+        collectionViewDelegate.update(viewModel: viewModel)
+        collectionView.reloadData()
     }
 }
 
@@ -140,15 +151,28 @@ extension MovieSearchView: UISearchBarDelegate {
 }
 
 
-// MARK: - MovieSearchViewTableViewDelegateOutput Implementation
+// MARK: - MovieSearchTableViewDelegateOutput Implementation
 
-extension MovieSearchView: MovieSearchViewTableViewDelegateOutput {
+extension MovieSearchView: MovieSearchTableViewDelegateOutput {
     
     func movieSearchViewTableView(
-        _ delegate: MovieSearchViewTableViewDelegate,
+        _ delegate: MovieSearchTableViewDelegate,
         didSelectItemAt indexPath: IndexPath,
-        with viewModel: MovieSearchTableViewViewModel
+        with viewModel: MovieSearchViewModel
     ) {
-        self.delegate?.movieSearchView(self, didSelectItemAt: indexPath, with: viewModel)
+        self.delegate?.movieSearchView(self, didSelectTableViewItemAt: indexPath, with: viewModel)
+    }
+}
+
+
+// MARK: - MovieSearchView CollectionView
+
+extension MovieSearchView: MovieSearchViewCollectionViewDelegateOutput {
+    func movieSearchCollectionView(
+        _ delegate: MovieSearchCollectionViewDelegate,
+        didSelectItemAt indexPath: IndexPath,
+        with viewModel: MovieSearchViewModel
+    ) {
+        self.delegate?.movieSearchView(self, didSelectCollectionViewItemAt: indexPath, with: viewModel)
     }
 }

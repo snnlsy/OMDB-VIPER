@@ -10,22 +10,21 @@ import UIKit
 
 // MARK: - MovieSearchViewCollectionViewDataSource
 
-final class MovieSearchViewCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+final class MovieSearchCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
-    init(viewModel: MovieSearchTableViewViewModel) {
+    init(viewModel: MovieSearchViewModel) {
         self.viewModel = viewModel
     }
     
-    private let viewModel: MovieSearchTableViewViewModel
+    private let viewModel: MovieSearchViewModel
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return viewModel.collectionViewMovieList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MovieSearchCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.backgroundColor = .blue
-
+        cell.configure(with: viewModel.collectionViewMovieList[indexPath.row])
         return cell
     }
 }

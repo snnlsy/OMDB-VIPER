@@ -8,7 +8,7 @@
 
 // MARK: - MovieSearchEntity
 
-struct MovieSearchEntity {
+struct MovieEntity {
     let title: String?
 //    let imdbId: String
 //    let type: String

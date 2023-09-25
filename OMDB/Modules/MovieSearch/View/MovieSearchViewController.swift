@@ -12,7 +12,7 @@ import UIKit
 
 protocol MovieSearchViewControllerProtocol: AnyObject, LoadingProtocol {
     func configureLayout()
-    func configure(with viewModel: MovieSearchTableViewViewModel)
+    func configure(with viewModel: MovieSearchViewModel)
 }
 
 
@@ -69,7 +69,7 @@ extension MovieSearchViewController: MovieSearchViewControllerProtocol {
         navigationItem.title = "Movie"
     }
     
-    func configure(with viewModel: MovieSearchTableViewViewModel) {
+    func configure(with viewModel: MovieSearchViewModel) {
         movieSearchView.configure(with: viewModel)
     }
 }
@@ -78,12 +78,21 @@ extension MovieSearchViewController: MovieSearchViewControllerProtocol {
 // MARK: - MovieSearchViewDelegate Implementation
 
 extension MovieSearchViewController: MovieSearchViewDelegate {
+    
     func movieSearchView(
         _ view: MovieSearchView,
-        didSelectItemAt indexPath: IndexPath,
-        with viewModel: MovieSearchTableViewViewModel
+        didSelectTableViewItemAt indexPath: IndexPath,
+        with viewModel: MovieSearchViewModel
     ) {
         presenter.didSelectTableView(at: indexPath, with: viewModel)
+    }
+    
+    func movieSearchView(
+        _ view: MovieSearchView,
+        didSelectCollectionViewItemAt indexPath: IndexPath,
+        with viewModel: MovieSearchViewModel
+    ) {
+        presenter.didSelectCollectionView(at: indexPath, with: viewModel)
     }
 }
 

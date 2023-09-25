@@ -37,8 +37,5 @@ final class MovieDetailView: UIView {
     lazy var titleLabel: UILabel = .build { label in
         
     }
-    
-    lazy var yearLabel: UILabel = .build { label in
-        
-    }
+
 }

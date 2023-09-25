@@ -11,7 +11,7 @@ import UIKit
 // MARK: - MovieSearchRouterProtocol
 
 protocol MovieSearchRouterProtocol {
-    func routeToMovieDetail(with entity: MovieSearchEntity)
+    func routeToMovieDetail(with entity: MovieEntity)
 }
 
 
@@ -35,7 +35,7 @@ final class MovieSearchRouter {
 
 extension MovieSearchRouter: MovieSearchRouterProtocol {
     
-    func routeToMovieDetail(with entity: MovieSearchEntity) {
+    func routeToMovieDetail(with entity: MovieEntity) {
         let viewController = MovieDetailBuilder.build(navigationController: navigationController)
         navigationController?.pushViewController(viewController, animated: true)
     }

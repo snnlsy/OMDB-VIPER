@@ -11,7 +11,11 @@ import Foundation
 // MARK: - MovieSearchInteractorProtocol
 
 protocol MovieSearchInteractorProtocol {
-    func retrieveMovieList(query: String, page: Int)
+    func retrieveMovieList(
+        query: String,
+        page: Int,
+        movieListType: MovieSearchViewModel.MovieListType
+    )
 }
 
 
@@ -21,6 +25,7 @@ protocol MovieSearchInteractorOutputProtocol: AnyObject {
     
     func movieSearchInteractor(
         _ api: MovieSearchInteractorProtocol,
+        movieListType: MovieSearchViewModel.MovieListType,
         didRetrieveMovieList response: MovieListResponse?
     )
     
@@ -49,8 +54,12 @@ final class MovieSearchInteractor {
 
 extension MovieSearchInteractor: MovieSearchInteractorProtocol {
     
-    func retrieveMovieList(query: String, page: Int) {
-        movieAPI.getMovieList(with: .init(query: query, page: page))
+    func retrieveMovieList(
+        query: String,
+        page: Int,
+        movieListType: MovieSearchViewModel.MovieListType
+    ) {
+        movieAPI.getMovieList(with: .init(query: query, page: page), movieListType: movieListType)
     }
 }
 
@@ -61,9 +70,10 @@ extension MovieSearchInteractor: MovieAPIOutputProtocol {
     
     func movieAPI(
         _ api: MovieAPIProtocol,
+        movieListType: MovieSearchViewModel.MovieListType,
         didRetrieveMovieList response: MovieListResponse?
     ) {
-        output?.movieSearchInteractor(self, didRetrieveMovieList: response)
+        output?.movieSearchInteractor(self, movieListType: movieListType, didRetrieveMovieList: response)
     }
     
     func movieAPI(
