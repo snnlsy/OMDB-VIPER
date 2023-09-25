@@ -41,8 +41,12 @@ final class MovieSearchPresenter {
 extension MovieSearchPresenter: MovieSearchPresenterProtocol {
     
     func viewDidLoad() {
+        view?.showLoading()
         view?.configureLayout()
-        view?.configure(with: viewModel)
+        
+        
+        interactor.retrieveMovieList(query: "Star", page: 1)
+
     }
     
     func didSelectTableView(
@@ -51,7 +55,6 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
     ) {
         print(indexPath)
 //        router?.routeToMovieDetail(with: MovieSearchEntity(title: "", imdbId: "", type: "", poster: ""))
-        interactor.retrieveMovieList(query: "hello", page: 1)
     }
 }
 
@@ -64,7 +67,14 @@ extension MovieSearchPresenter: MovieSearchInteractorOutputProtocol {
         _ api: MovieSearchInteractorProtocol,
         didRetrieveMovieList response: MovieListResponse?
     ) {
-        print(response)
+        view?.hideLoading()
+        
+        response?.search.forEach({ model in
+            var model: MovieSearchEntity = .init(title: model?.title, poster: model?.poster)
+            viewModel.movieList.append(model)
+        })
+        
+        view?.configure(with: viewModel)
     }
 
     func movieSearchInteractor(

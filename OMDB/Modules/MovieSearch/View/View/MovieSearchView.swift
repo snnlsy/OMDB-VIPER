@@ -120,6 +120,7 @@ extension MovieSearchView {
         tableView.delegate = tableViewDelegate
         tableViewDelegate.output = self
         tableViewDelegate.update(viewModel: viewModel)
+        tableView.reloadData()
         
         
         collectionViewDataSource = MovieSearchViewCollectionViewDataSource(viewModel: viewModel)

@@ -13,10 +13,14 @@ import SnapKit
 
 final class MovieSearchTableViewCell: UITableViewCell {
     
+    private lazy var posterImageView: CacheableImageView = .build()
+    private lazy var movieNameLabel: UILabel = .build { label in
+        label.numberOfLines = 0
+    }
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
-        backgroundColor = .purple
     }
     
     required init?(coder: NSCoder) {
@@ -35,10 +39,41 @@ extension MovieSearchTableViewCell {
     }
     
     private func setupHierarchy() {
-        
+        addSubview(posterImageView, movieNameLabel)
     }
     
     private func setupLayout() {
+        posterImageView.snp.makeConstraints { make in
+            make.verticalEdges.equalToSuperview().inset(Spacing.small)
+            make.leading.equalToSuperview().offset(Spacing.large)
+            make.width.equalTo(Constant.posterImageViewWidth)
+        }
+        
+        movieNameLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(posterImageView.snp.trailing).offset(Spacing.large)
+            make.trailing.equalToSuperview().inset(Spacing.large)
+        }
+    }
+}
 
+
+// MARK: - MovieSearchTableViewCell Configure
+
+extension MovieSearchTableViewCell {
+    
+    func configure(with entity: MovieSearchEntity) {
+        posterImageView.setImage(with: entity.poster)
+        movieNameLabel.text = entity.title
+    }
+}
+
+
+// MARK: - MovieSearchTableViewCell Constant
+
+extension MovieSearchTableViewCell {
+    
+    enum Constant {
+        static let posterImageViewWidth: CGFloat = 60
     }
 }

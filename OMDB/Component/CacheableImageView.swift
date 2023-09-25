@@ -14,7 +14,9 @@ final class CacheableImageView: UIImageView {
     
     private static let imageCache = NSCache<NSString, UIImage>()
     
-    func setImage(with imageUrl: URL) {
+    func setImage(with imageUrlString: String?) {
+        guard let imageUrlString,
+              let imageUrl = URL(string: imageUrlString) else { return }
         checkCache(from: imageUrl) { cachedImage in
             if let cachedImage {
                 self.image = cachedImage

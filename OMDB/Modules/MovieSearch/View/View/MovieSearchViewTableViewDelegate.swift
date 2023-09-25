@@ -40,4 +40,8 @@ extension MovieSearchViewTableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         output?.movieSearchViewTableView(self, didSelectItemAt: indexPath, with: viewModel!)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }

@@ -12,5 +12,5 @@ import Foundation
 
 struct MovieSearchTableViewViewModel {
     
-    let movieList: [MovieSearchEntity] = []
+    var movieList: [MovieSearchEntity] = []
 }

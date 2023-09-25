@@ -45,6 +45,7 @@
 		0EA43BA72AC0EEA4002C68F5 /* CacheableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BA62AC0EEA4002C68F5 /* CacheableImageView.swift */; };
 		0EA43BB32AC21EB3002C68F5 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB22AC21EB3002C68F5 /* LoadingViewController.swift */; };
 		0EA43BB52AC22060002C68F5 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB42AC22060002C68F5 /* LoadingProtocol.swift */; };
+		0EA43BB82AC2329D002C68F5 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB72AC2329D002C68F5 /* Spacing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		0EA43BA62AC0EEA4002C68F5 /* CacheableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheableImageView.swift; sourceTree = "<group>"; };
 		0EA43BB22AC21EB3002C68F5 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		0EA43BB42AC22060002C68F5 /* LoadingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocol.swift; sourceTree = "<group>"; };
+		0EA43BB72AC2329D002C68F5 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				0EA43B9C2AC0E0E9002C68F5 /* Service */,
 				0EA43B362ABF3800002C68F5 /* Protocol */,
 				0EA43B122ABE35BC002C68F5 /* Extension */,
+				0EA43BB62AC23284002C68F5 /* Constant */,
 				0EA43AF92ABE2A0B002C68F5 /* Assets.xcassets */,
 				0EA43AFB2ABE2A0B002C68F5 /* LaunchScreen.storyboard */,
 				0EA43AFE2ABE2A0B002C68F5 /* Info.plist */,
@@ -378,6 +381,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		0EA43BB62AC23284002C68F5 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				0EA43BB72AC2329D002C68F5 /* Spacing.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -483,6 +494,7 @@
 				0EA43B432ABF436B002C68F5 /* MovieSearchTableViewViewModel.swift in Sources */,
 				0EA43B482ABF73EC002C68F5 /* MovieSearchViewCollectionViewDataSource.swift in Sources */,
 				0EA43B8B2AC08D79002C68F5 /* MovieSearchCollectionViewCell.swift in Sources */,
+				0EA43BB82AC2329D002C68F5 /* Spacing.swift in Sources */,
 				0EA43B982AC0B5BF002C68F5 /* Data+Extension.swift in Sources */,
 				0EA43B142ABE35D1002C68F5 /* UIView+Extension.swift in Sources */,
 				0EA43B262ABF1853002C68F5 /* MovieDetailViewController.swift in Sources */,

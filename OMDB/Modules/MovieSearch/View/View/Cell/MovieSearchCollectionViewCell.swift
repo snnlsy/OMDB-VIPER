@@ -35,8 +35,7 @@ extension MovieSearchCollectionViewCell {
         setupHierarchy()
         setupLayout()
         
-        imageView.setImage(with: URL(
-            string: "https://m.media-amazon.com/images/M/MV5BYjZlYTBlZWMtNjc4Ni00ZmEyLTk1ZmQtZGI3ZDg4ZmM2OGU3XkEyXkFqcGdeQXVyNjI4NDY5ODM@._V1_SX300.jpg")!)
+        imageView.setImage(with: "https://m.media-amazon.com/images/M/MV5BYjZlYTBlZWMtNjc4Ni00ZmEyLTk1ZmQtZGI3ZDg4ZmM2OGU3XkEyXkFqcGdeQXVyNjI4NDY5ODM@._V1_SX300.jpg")
     }
     
     private func setupHierarchy() {

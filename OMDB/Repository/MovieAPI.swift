@@ -55,7 +55,10 @@ extension MovieAPI: MovieAPIProtocol {
                     self.output?.movieAPI(self, didRetrieveError: .decodeError)
                     return
                 }
-                self.output?.movieAPI(self, didRetrieveMovieList: response)
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    self.output?.movieAPI(self, didRetrieveMovieList: response)
+                }
             case .failure(let error):
                 self.output?.movieAPI(self, didRetrieveError: error)
             }
