@@ -41,4 +41,12 @@ extension MovieSearchCollectionViewDelegate {
         guard let viewModel else { return }
         output?.movieSearchCollectionView(self, didSelectItemAt: indexPath, with: viewModel)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let viewModel else { return }
+        let lastIndex = viewModel.collectionViewMovieList.count - 1
+        if lastIndex == indexPath.row {
+            print("last collect")
+        }
+    }
 }
