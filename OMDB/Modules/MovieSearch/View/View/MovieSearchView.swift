@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 // MARK: - MovieSearchViewDelegate
 
 protocol MovieSearchViewDelegate: AnyObject {
@@ -61,7 +60,7 @@ final class MovieSearchView: UIView {
         searchBar.text = MovieSearchViewConstant.defaultQuery
     }
     
-    private lazy var tableView: UITableView = .build { [weak self] tableView in
+    private lazy var tableView: UITableView = .build { tableView in
         tableView.register(MovieSearchTableViewCell.self)
     }
   
@@ -74,7 +73,7 @@ final class MovieSearchView: UIView {
         )
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(0.5),
+                widthDimension: .fractionalWidth(0.4),
                 heightDimension: .fractionalHeight(1)
             ),
             subitems: [item]
@@ -87,6 +86,7 @@ final class MovieSearchView: UIView {
             collectionViewLayout: UICollectionViewCompositionalLayout(section: section)
         )
         collectionView.register(MovieSearchCollectionViewCell.self)
+        collectionView.backgroundColor = .systemGray3
         
         return collectionView
     }()

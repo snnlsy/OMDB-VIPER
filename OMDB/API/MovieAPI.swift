@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 // MARK: - MovieRepositoryProtocol
 
 protocol MovieAPIProtocol {
@@ -56,8 +55,7 @@ extension MovieAPI: MovieAPIProtocol {
             output?.movieAPI(self, didRetrieveError: .invalidURL)
             return
         }
-        NetworkService.shared.fetchData(url: url) { [weak self] dataResponse in
-            guard let self else { return }
+        NetworkService.shared.fetchData(url: url) { dataResponse in
             switch dataResponse {
             case .success(let data):
                 guard let response: MovieListResponse = data.decodeData() else {

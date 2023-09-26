@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - MovieSearchViewCollectionViewDataSource
 
 final class MovieSearchCollectionViewDataSource: NSObject, UICollectionViewDataSource {

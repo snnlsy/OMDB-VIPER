@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - MovieSearchBuilder
 
 enum MovieSearchBuilder {

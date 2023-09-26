@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 enum MovieDetailBuilder {
     
     static func build(navigationController: UINavigationController?, movieEntity: MovieEntity) -> UIViewController {

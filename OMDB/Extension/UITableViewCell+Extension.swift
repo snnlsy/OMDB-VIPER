@@ -7,5 +7,4 @@
 
 import UIKit
 
-
 extension UITableViewCell: ReusableViewProtocol {}

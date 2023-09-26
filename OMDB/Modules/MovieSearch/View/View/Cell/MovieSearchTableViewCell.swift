@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 // MARK: - MovieSearchTableViewCell
 
 final class MovieSearchTableViewCell: UITableViewCell {

@@ -5,7 +5,6 @@
 //  Created by Sinan Ulusoy on 24.09.2023.
 //
 
-
 // MARK: - MovieListResponse
 
 struct MovieListResponse: Codable {

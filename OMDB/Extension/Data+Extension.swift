@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension Data {
     
     func decodeData<T: Decodable>() -> T? {

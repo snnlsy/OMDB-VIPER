@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - MovieDetailViewControllerProtocol
 
 protocol MovieDetailViewControllerProtocol: AnyObject {

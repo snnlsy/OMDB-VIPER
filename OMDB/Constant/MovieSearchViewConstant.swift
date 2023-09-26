@@ -5,7 +5,6 @@
 //  Created by Sinan Ulusoy on 26.09.2023.
 //
 
-
 // MARK: - SearchConstant
 
 enum MovieSearchViewConstant {

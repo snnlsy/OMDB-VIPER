@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - MovieSearchViewControllerProtocol
 
 protocol MovieSearchViewControllerProtocol: AnyObject, LoadingProtocol {

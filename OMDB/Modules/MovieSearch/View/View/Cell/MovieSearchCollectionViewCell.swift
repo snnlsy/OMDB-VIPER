@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 // MARK: - MovieSearchCollectionViewCell
 
 final class MovieSearchCollectionViewCell: UICollectionViewCell {

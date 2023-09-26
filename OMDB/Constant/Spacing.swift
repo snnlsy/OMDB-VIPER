@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 // MARK: - Spacing
 
 enum Spacing {

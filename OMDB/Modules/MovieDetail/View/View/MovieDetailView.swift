@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 final class MovieDetailView: UIView {
     
     override init(frame: CGRect) {

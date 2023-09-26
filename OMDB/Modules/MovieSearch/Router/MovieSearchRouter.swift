@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - MovieSearchRouterProtocol
 
 protocol MovieSearchRouterProtocol {

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - MovieSearchViewTableViewDataSource
 
 final class MovieSearchTableViewDataSource: NSObject, UITableViewDataSource {

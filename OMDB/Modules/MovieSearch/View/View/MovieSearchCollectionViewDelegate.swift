@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - MovieSearchViewTableViewDelegateOutput
 
 protocol MovieSearchViewCollectionViewDelegateOutput: AnyObject {

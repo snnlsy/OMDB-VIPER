@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 extension UICollectionView {
     
     func register(_ type: UICollectionViewCell.Type) {

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: - CacheableImageView
 
 final class CacheableImageView: UIImageView {
@@ -43,7 +42,7 @@ final class CacheableImageView: UIImageView {
 
 extension CacheableImageView {
     
-    private func checkCache(from imageUrl: URL, completion: @escaping (UIImage?) -> Void) {
+    private func checkCache(from imageUrl: URL, completion: (UIImage?) -> Void) {
         let cacheKey = NSString(string: imageUrl.absoluteString)
         if let image = Self.imageCache.object(forKey: cacheKey) {
             completion(image)
