@@ -98,5 +98,9 @@ extension MovieSearchViewController: MovieSearchViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView) {
         presenter.retrieveMovieList(movieListType: .tableView)
     }
+    
+    func collectionViewWillDisplayLastCell(_ collectionView: UICollectionView) {
+        presenter.retrieveMovieList(movieListType: .collectionView)
+    }
 }
 

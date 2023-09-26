@@ -24,7 +24,13 @@ protocol MovieSearchViewDelegate: AnyObject {
         with viewModel: MovieSearchViewModel
     )
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView)
+    func scrollViewDidEndDragging(
+        _ scrollView: UIScrollView
+    )
+    
+    func collectionViewWillDisplayLastCell(
+        _ collectionView: UICollectionView
+    )
 }
 
 
@@ -174,11 +180,16 @@ extension MovieSearchView: MovieSearchTableViewDelegateOutput {
 // MARK: - MovieSearchView CollectionView
 
 extension MovieSearchView: MovieSearchViewCollectionViewDelegateOutput {
+    
     func movieSearchCollectionView(
         _ delegate: MovieSearchCollectionViewDelegate,
         didSelectItemAt indexPath: IndexPath,
         with viewModel: MovieSearchViewModel
     ) {
         self.delegate?.movieSearchView(self, didSelectCollectionViewItemAt: indexPath, with: viewModel)
+    }
+
+    func collectionViewWillDisplayLastCell(_ collectionView: UICollectionView) {
+        self.delegate?.collectionViewWillDisplayLastCell(collectionView)
     }
 }

@@ -105,7 +105,6 @@ extension MovieSearchPresenter: MovieSearchInteractorOutputProtocol {
         if group.getEnterCount() > 0 {
             group.countedLeave()
         }
-        viewModel.tableViewPage += 1
         response?.search.forEach({ model in
             let model: MovieEntity = .init(title: model?.title, poster: model?.poster)
             switch movieListType {
@@ -115,6 +114,13 @@ extension MovieSearchPresenter: MovieSearchInteractorOutputProtocol {
                 viewModel.collectionViewMovieList.append(model)
             }
         })
+        // TODO: fonskiyon kullan
+        switch movieListType {
+        case .tableView:
+            viewModel.tableViewPage += 1
+        case .collectionView:
+            viewModel.collectionViewPage += 1
+        }
         view?.configure(with: viewModel)
     }
 

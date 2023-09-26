@@ -16,6 +16,10 @@ protocol MovieSearchViewCollectionViewDelegateOutput: AnyObject {
         didSelectItemAt indexPath: IndexPath,
         with viewModel: MovieSearchViewModel
     )
+    
+    func collectionViewWillDisplayLastCell(
+        _ collectionView: UICollectionView
+    )
 }
 
 
@@ -46,7 +50,7 @@ extension MovieSearchCollectionViewDelegate {
         guard let viewModel else { return }
         let lastIndex = viewModel.collectionViewMovieList.count - 1
         if lastIndex == indexPath.row {
-            print("last collect")
+            output?.collectionViewWillDisplayLastCell(collectionView)
         }
     }
 }
