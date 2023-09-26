@@ -24,10 +24,6 @@ final class MovieSearchRouter {
     }
     
     private(set) var navigationController: UINavigationController?
-    
-    var viewController: UIViewController? {
-        navigationController
-    }
 }
 
 

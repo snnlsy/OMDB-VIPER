@@ -73,7 +73,7 @@ extension MovieSearchTableViewCell {
 
 extension MovieSearchTableViewCell {
     
-    enum Constant {
+    private enum Constant {
         static let posterImageViewWidth: CGFloat = 60
     }
 }

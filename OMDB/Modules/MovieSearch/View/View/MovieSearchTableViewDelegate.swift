@@ -11,11 +11,13 @@ import UIKit
 // MARK: - MovieSearchViewTableViewDelegateOutput
 
 protocol MovieSearchTableViewDelegateOutput: AnyObject {
+    
     func movieSearchViewTableView(
         _ delegate: MovieSearchTableViewDelegate,
         didSelectItemAt indexPath: IndexPath,
         with viewModel: MovieSearchViewModel
     )
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView)
 }
 
@@ -44,7 +46,7 @@ extension MovieSearchTableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return Constant.tableViewCellHeight
     }
 }
 
@@ -56,8 +58,19 @@ extension MovieSearchTableViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        if maximumOffset - currentOffset <= 30.0 {
+        if maximumOffset - currentOffset <= Constant.offsetLimit {
             output?.scrollViewDidEndDragging(scrollView)
         }
+    }
+}
+
+
+// MARK: - MovieSearchTableViewDelegate Constant
+
+extension MovieSearchTableViewDelegate {
+    
+    private enum Constant {
+        static let tableViewCellHeight: CGFloat = 100
+        static let offsetLimit: CGFloat = 30
     }
 }

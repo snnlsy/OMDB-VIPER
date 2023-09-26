@@ -14,7 +14,6 @@ final class MovieDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        backgroundColor = .orange
     }
     
     required init?(coder: NSCoder) {
@@ -25,7 +24,10 @@ final class MovieDetailView: UIView {
     
     var titleLabel: UILabel = .build { label in
         label.numberOfLines = 0
+        label.textAlignment = .center
     }
+    
+    var yearLabel: UILabel = .build()
 }
 
 
@@ -37,7 +39,7 @@ extension MovieDetailView {
     }
     
     private func setupHierarchy() {
-        addSubview(posterImageView, titleLabel)
+        addSubview(posterImageView, titleLabel, yearLabel)
     }
     
     private func setupLayout() {
@@ -48,7 +50,12 @@ extension MovieDetailView {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImageView.snp.bottom)
+            make.top.equalTo(posterImageView.snp.bottom).offset(Spacing.large)
+            make.horizontalEdges.equalToSuperview().inset(Spacing.large)
+        }
+        
+        yearLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(Spacing.large)
             make.horizontalEdges.equalToSuperview().inset(Spacing.large)
         }
     }

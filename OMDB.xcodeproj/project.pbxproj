@@ -46,6 +46,7 @@
 		0EA43BB82AC2329D002C68F5 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB72AC2329D002C68F5 /* Spacing.swift */; };
 		0EA43BBA2AC242C3002C68F5 /* MovieSearchCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB92AC242C3002C68F5 /* MovieSearchCollectionViewDelegate.swift */; };
 		0EA43BBE2AC31AA7002C68F5 /* DispatchGroup+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BBD2AC31AA7002C68F5 /* DispatchGroup+Extension.swift */; };
+		0EA43BC02AC3461C002C68F5 /* MovieSearchViewConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BBF2AC3461C002C68F5 /* MovieSearchViewConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		0EA43BB72AC2329D002C68F5 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		0EA43BB92AC242C3002C68F5 /* MovieSearchCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		0EA43BBD2AC31AA7002C68F5 /* DispatchGroup+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Extension.swift"; sourceTree = "<group>"; };
+		0EA43BBF2AC3461C002C68F5 /* MovieSearchViewConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchViewConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +127,7 @@
 				0EA43B072ABE30AE002C68F5 /* App */,
 				0EA43B2D2ABF18B7002C68F5 /* Modules */,
 				0EA43BA52AC0EE57002C68F5 /* Component */,
-				0EA43B8C2AC0A73D002C68F5 /* Repository */,
+				0EA43B8C2AC0A73D002C68F5 /* API */,
 				0EA43B9C2AC0E0E9002C68F5 /* Service */,
 				0EA43B362ABF3800002C68F5 /* Protocol */,
 				0EA43B122ABE35BC002C68F5 /* Extension */,
@@ -314,14 +316,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		0EA43B8C2AC0A73D002C68F5 /* Repository */ = {
+		0EA43B8C2AC0A73D002C68F5 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				0EA43B8F2AC0AA17002C68F5 /* Request */,
 				0EA43B902AC0AA1D002C68F5 /* Response */,
 				0EA43B8D2AC0A754002C68F5 /* MovieAPI.swift */,
 			);
-			path = Repository;
+			path = API;
 			sourceTree = "<group>";
 		};
 		0EA43B8F2AC0AA17002C68F5 /* Request */ = {
@@ -361,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA43BB72AC2329D002C68F5 /* Spacing.swift */,
+				0EA43BBF2AC3461C002C68F5 /* MovieSearchViewConstant.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				0EA43B2A2ABF1880002C68F5 /* MovieDetailPresenter.swift in Sources */,
 				0EA43B432ABF436B002C68F5 /* MovieSearchViewModel.swift in Sources */,
 				0EA43B482ABF73EC002C68F5 /* MovieSearchCollectionViewDataSource.swift in Sources */,
+				0EA43BC02AC3461C002C68F5 /* MovieSearchViewConstant.swift in Sources */,
 				0EA43B8B2AC08D79002C68F5 /* MovieSearchCollectionViewCell.swift in Sources */,
 				0EA43BB82AC2329D002C68F5 /* Spacing.swift in Sources */,
 				0EA43B982AC0B5BF002C68F5 /* Data+Extension.swift in Sources */,

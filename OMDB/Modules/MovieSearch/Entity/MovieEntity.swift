@@ -10,7 +10,6 @@
 
 struct MovieEntity {
     let title: String?
-//    let imdbId: String
-//    let type: String
     let poster: String?
+    let year: String?
 }

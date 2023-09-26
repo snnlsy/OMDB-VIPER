@@ -11,7 +11,6 @@ import Foundation
 // MARK: - Spacing
 
 enum Spacing {
-    
     static let small: CGFloat = 16
     static let large: CGFloat = 16
 }

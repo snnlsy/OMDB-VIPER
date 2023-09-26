@@ -8,10 +8,14 @@
 import Foundation
 
 
+// MARK: - MovieDetailPresenterProtocol
+
 protocol MovieDetailPresenterProtocol {
     func viewDidLoad()
 }
 
+
+// MARK: - MovieDetailPresenter
 
 final class MovieDetailPresenter {
     
@@ -22,11 +26,13 @@ final class MovieDetailPresenter {
     init(movieEntity: MovieEntity) {
         self.movieEntity = movieEntity
     }
-    
 }
 
 
+// MARK: - MovieDetailPresenterProtocol Implementation
+
 extension MovieDetailPresenter: MovieDetailPresenterProtocol {
+    
     func viewDidLoad() {
         view?.configure(with: movieEntity)
     }

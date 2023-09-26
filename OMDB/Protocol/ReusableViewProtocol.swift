@@ -5,10 +5,15 @@
 //  Created by Sinan Ulusoy on 23.09.2023.
 //
 
-protocol ReusableViewProtocol {
 
+// MARK: - ReusableViewProtocol
+
+protocol ReusableViewProtocol {
     static var reuseIdentifier: String { get }
 }
+
+
+// MARK: - ReusableViewProtocol implementation
 
 extension ReusableViewProtocol {
 

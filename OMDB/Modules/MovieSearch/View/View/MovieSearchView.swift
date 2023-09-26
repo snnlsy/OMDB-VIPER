@@ -12,6 +12,7 @@ import SnapKit
 // MARK: - MovieSearchViewDelegate
 
 protocol MovieSearchViewDelegate: AnyObject {
+    
     func movieSearchView(
         _ view: MovieSearchView,
         didSelectTableViewItemAt indexPath: IndexPath,
@@ -29,13 +30,9 @@ protocol MovieSearchViewDelegate: AnyObject {
         textDidChange searchText: String
     )
     
-    func scrollViewDidEndDragging(
-        _ scrollView: UIScrollView
-    )
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView)
     
-    func collectionViewWillDisplayLastCell(
-        _ collectionView: UICollectionView
-    )
+    func collectionViewWillDisplayLastCell(_ collectionView: UICollectionView)
 }
 
 
@@ -61,7 +58,7 @@ final class MovieSearchView: UIView {
 
     private lazy var searchBar: UISearchBar = .build { searchBar in
         searchBar.delegate = self
-        searchBar.text = "Star"
+        searchBar.text = MovieSearchViewConstant.defaultQuery
     }
     
     private lazy var tableView: UITableView = .build { [weak self] tableView in
@@ -89,6 +86,8 @@ final class MovieSearchView: UIView {
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(section: section)
         )
+        collectionView.register(MovieSearchCollectionViewCell.self)
+        
         return collectionView
     }()
 }
@@ -125,7 +124,7 @@ extension MovieSearchView {
         collectionView.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(200)
+            make.height.equalTo(Constant.collectionViewHeight)
         }
     }
 }
@@ -135,21 +134,21 @@ extension MovieSearchView {
 
 extension MovieSearchView {
     
-    func configure(with viewModel: MovieSearchViewModel) {
+    func configureTableView(with viewModel: MovieSearchViewModel) {
         tableViewDataSource = MovieSearchTableViewDataSource(viewModel: viewModel)
-        tableView.dataSource = tableViewDataSource
-        tableView.delegate = tableViewDelegate
         tableViewDelegate.output = self
         tableViewDelegate.update(viewModel: viewModel)
+        tableView.dataSource = tableViewDataSource
+        tableView.delegate = tableViewDelegate
         tableView.reloadData()
-        
-        
+    }
+    
+    func configureCollectionView(with viewModel: MovieSearchViewModel) {
         collectionViewDataSource = MovieSearchCollectionViewDataSource(viewModel: viewModel)
+        collectionViewDelegate.output = self
+        collectionViewDelegate.update(viewModel: viewModel)
         collectionView.dataSource = collectionViewDataSource
         collectionView.delegate = collectionViewDelegate
-        collectionViewDelegate.output = self
-        collectionView.register(MovieSearchCollectionViewCell.self)
-        collectionViewDelegate.update(viewModel: viewModel)
         collectionView.reloadData()
     }
 }
@@ -197,5 +196,15 @@ extension MovieSearchView: MovieSearchViewCollectionViewDelegateOutput {
 
     func collectionViewWillDisplayLastCell(_ collectionView: UICollectionView) {
         self.delegate?.collectionViewWillDisplayLastCell(collectionView)
+    }
+}
+
+
+// MARK: - MovieSearchView Constant
+
+extension MovieSearchView {
+    
+    private enum Constant {
+        static let collectionViewHeight: CGFloat = 200
     }
 }

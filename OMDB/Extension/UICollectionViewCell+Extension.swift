@@ -7,4 +7,5 @@
 
 import UIKit
 
-extension UICollectionViewCell: ReusableViewProtocol {}
+
+extension UICollectionViewCell: ReusableViewProtocol { }

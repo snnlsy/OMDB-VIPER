@@ -12,7 +12,8 @@ import UIKit
 
 protocol MovieSearchViewControllerProtocol: AnyObject, LoadingProtocol {
     func configureLayout()
-    func configure(with viewModel: MovieSearchViewModel)
+    func configureTableView(with viewModel: MovieSearchViewModel)
+    func configureCollectionView(with viewModel: MovieSearchViewModel)
 }
 
 
@@ -65,12 +66,16 @@ extension MovieSearchViewController: MovieSearchViewControllerProtocol {
     }
     
     func configureLayout() {
-        movieSearchView.backgroundColor = .red
-        navigationItem.title = "Movie"
+        movieSearchView.backgroundColor = .systemGray3
+        navigationItem.title = MovieSearchViewConstant.title
+    }
+
+    func configureTableView(with viewModel: MovieSearchViewModel) {
+        movieSearchView.configureTableView(with: viewModel)
     }
     
-    func configure(with viewModel: MovieSearchViewModel) {
-        movieSearchView.configure(with: viewModel)
+    func configureCollectionView(with viewModel: MovieSearchViewModel) {
+        movieSearchView.configureCollectionView(with: viewModel)
     }
 }
 

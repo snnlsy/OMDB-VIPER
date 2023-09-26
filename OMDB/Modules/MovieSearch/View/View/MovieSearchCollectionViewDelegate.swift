@@ -11,15 +11,14 @@ import UIKit
 // MARK: - MovieSearchViewTableViewDelegateOutput
 
 protocol MovieSearchViewCollectionViewDelegateOutput: AnyObject {
+    
     func movieSearchCollectionView(
         _ delegate: MovieSearchCollectionViewDelegate,
         didSelectItemAt indexPath: IndexPath,
         with viewModel: MovieSearchViewModel
     )
     
-    func collectionViewWillDisplayLastCell(
-        _ collectionView: UICollectionView
-    )
+    func collectionViewWillDisplayLastCell(_ collectionView: UICollectionView)
 }
 
 

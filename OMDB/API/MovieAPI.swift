@@ -11,6 +11,7 @@ import Foundation
 // MARK: - MovieRepositoryProtocol
 
 protocol MovieAPIProtocol {
+    
     func getMovieList(
         with request: MovieListRequest,
         movieListType: MovieSearchViewModel.MovieListType
@@ -21,6 +22,7 @@ protocol MovieAPIProtocol {
 // MARK: - MovieAPIOutputProtocol
 
 protocol MovieAPIOutputProtocol: AnyObject {
+    
     func movieAPI(
         _ api: MovieAPIProtocol,
         movieListType: MovieSearchViewModel.MovieListType,
