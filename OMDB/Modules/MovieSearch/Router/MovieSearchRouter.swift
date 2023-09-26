@@ -36,7 +36,10 @@ final class MovieSearchRouter {
 extension MovieSearchRouter: MovieSearchRouterProtocol {
     
     func routeToMovieDetail(with entity: MovieEntity) {
-        let viewController = MovieDetailBuilder.build(navigationController: navigationController)
+        let viewController = MovieDetailBuilder.build(
+            navigationController: navigationController,
+            movieEntity: entity
+        )
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -9,9 +9,11 @@ import UIKit
 
 enum MovieDetailBuilder {
     
-    static func build(navigationController: UINavigationController?) -> UIViewController {
-        let presenter = MovieDetailPresenter()
+    static func build(navigationController: UINavigationController?, movieEntity: MovieEntity) -> UIViewController {
+        let presenter = MovieDetailPresenter(movieEntity: movieEntity)
         let view = MovieDetailViewController(presenter: presenter)
+        
+        presenter.view = view
         
         return view
     }

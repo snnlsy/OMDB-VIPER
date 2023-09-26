@@ -11,8 +11,8 @@ import UIKit
 // MARK: - MovieDetailViewControllerProtocol
 
 protocol MovieDetailViewControllerProtocol: AnyObject {
-//    func configureLayout()
-//    func configure(with viewModel: MovieSearchTableViewViewModel)
+    func configureLayout()
+    func configure(with entity: MovieEntity)
 }
 
 
@@ -32,7 +32,7 @@ final class MovieDetailViewController: UIViewController {
     private let presenter: MovieDetailPresenterProtocol
         
     private lazy var movieDetailView: MovieDetailView = .build { view in
-        view.delegate = self
+//        view.delegate = self
     }
 }
 
@@ -47,7 +47,7 @@ extension MovieDetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        presenter.viewDidLoad()
+        presenter.viewDidLoad()
     }
 }
 
@@ -55,8 +55,13 @@ extension MovieDetailViewController {
 // MARK: - MovieDetailViewControllerProtocol Implementation
 
 extension MovieDetailViewController: MovieDetailViewControllerProtocol {
-
+    func configureLayout() {
+        
+    }
+    
+    func configure(with entity: MovieEntity) {
+        movieDetailView.posterImageView.setImage(with: entity.poster)
+        movieDetailView.titleLabel.text = entity.title
+    }
 }
 
-
-extension MovieDetailViewController: MovieDetailViewDelegate { }
