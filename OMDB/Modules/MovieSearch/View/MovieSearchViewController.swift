@@ -78,7 +78,7 @@ extension MovieSearchViewController: MovieSearchViewControllerProtocol {
 // MARK: - MovieSearchViewDelegate Implementation
 
 extension MovieSearchViewController: MovieSearchViewDelegate {
-    
+
     func movieSearchView(
         _ view: MovieSearchView,
         didSelectTableViewItemAt indexPath: IndexPath,
@@ -93,6 +93,10 @@ extension MovieSearchViewController: MovieSearchViewDelegate {
         with viewModel: MovieSearchViewModel
     ) {
         presenter.didSelectCollectionView(at: indexPath, with: viewModel)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView) {
+        presenter.retrieveMovieList(movieListType: .tableView)
     }
 }
 

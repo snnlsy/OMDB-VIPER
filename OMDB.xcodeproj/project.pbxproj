@@ -45,6 +45,7 @@
 		0EA43BB52AC22060002C68F5 /* LoadingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB42AC22060002C68F5 /* LoadingProtocol.swift */; };
 		0EA43BB82AC2329D002C68F5 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB72AC2329D002C68F5 /* Spacing.swift */; };
 		0EA43BBA2AC242C3002C68F5 /* MovieSearchCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BB92AC242C3002C68F5 /* MovieSearchCollectionViewDelegate.swift */; };
+		0EA43BBE2AC31AA7002C68F5 /* DispatchGroup+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA43BBD2AC31AA7002C68F5 /* DispatchGroup+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		0EA43BB42AC22060002C68F5 /* LoadingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingProtocol.swift; sourceTree = "<group>"; };
 		0EA43BB72AC2329D002C68F5 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		0EA43BB92AC242C3002C68F5 /* MovieSearchCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		0EA43BBD2AC31AA7002C68F5 /* DispatchGroup+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				0EA43B392ABF38DC002C68F5 /* UITableView+Extension.swift */,
 				0EA43B3B2ABF38F5002C68F5 /* UITableViewCell+Extension.swift */,
 				0EA43B972AC0B5BF002C68F5 /* Data+Extension.swift */,
+				0EA43BBD2AC31AA7002C68F5 /* DispatchGroup+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				0EA43B1A2ABEDD80002C68F5 /* MovieSearchPresenter.swift in Sources */,
 				0EA43B962AC0AD40002C68F5 /* MovieListRequest.swift in Sources */,
 				0EA43B312ABF2340002C68F5 /* MovieSearchRouter.swift in Sources */,
+				0EA43BBE2AC31AA7002C68F5 /* DispatchGroup+Extension.swift in Sources */,
 				0EA43B112ABE33C7002C68F5 /* MovieSearchView.swift in Sources */,
 				0EA43B3C2ABF38F5002C68F5 /* UITableViewCell+Extension.swift in Sources */,
 				0EA43B412ABF3EFA002C68F5 /* MovieEntity.swift in Sources */,

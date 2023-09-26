@@ -12,6 +12,8 @@ import Foundation
 
 struct MovieSearchViewModel {
     
+    // TODO: make update
+    
     enum MovieListType {
         case tableView
         case collectionView
@@ -19,4 +21,7 @@ struct MovieSearchViewModel {
     
     var tableViewMovieList: [MovieEntity] = []
     var collectionViewMovieList: [MovieEntity] = []
+    
+    var tableViewPage = 1
+    var collectionViewPage = 1
 }

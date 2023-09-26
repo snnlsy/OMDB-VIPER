@@ -23,6 +23,8 @@ protocol MovieSearchViewDelegate: AnyObject {
         didSelectCollectionViewItemAt indexPath: IndexPath,
         with viewModel: MovieSearchViewModel
     )
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView)
 }
 
 
@@ -161,6 +163,10 @@ extension MovieSearchView: MovieSearchTableViewDelegateOutput {
         with viewModel: MovieSearchViewModel
     ) {
         self.delegate?.movieSearchView(self, didSelectTableViewItemAt: indexPath, with: viewModel)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView) {
+        self.delegate?.scrollViewDidEndDragging(scrollView)
     }
 }
 

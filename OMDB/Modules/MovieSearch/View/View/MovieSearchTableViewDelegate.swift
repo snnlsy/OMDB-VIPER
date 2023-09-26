@@ -16,6 +16,7 @@ protocol MovieSearchTableViewDelegateOutput: AnyObject {
         didSelectItemAt indexPath: IndexPath,
         with viewModel: MovieSearchViewModel
     )
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView)
 }
 
 
@@ -56,7 +57,7 @@ extension MovieSearchTableViewDelegate {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         if maximumOffset - currentOffset <= 30.0 {
-            print("last table")
+            output?.scrollViewDidEndDragging(scrollView)
         }
     }
 }

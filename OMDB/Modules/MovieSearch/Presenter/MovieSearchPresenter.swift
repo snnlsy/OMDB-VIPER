@@ -20,6 +20,9 @@ protocol MovieSearchPresenterProtocol {
         at indexPath: IndexPath,
         with viewModel: MovieSearchViewModel
     )
+    func retrieveMovieList(
+        movieListType: MovieSearchViewModel.MovieListType
+    )
 }
 
 
@@ -50,11 +53,11 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
         view?.showLoading()
         view?.configureLayout()
         
-        group.enter()
-        interactor.retrieveMovieList(query: "Star", page: 1, movieListType: .tableView)
+        group.countedEnter()
+        interactor.retrieveMovieList(query: "Star", page: viewModel.tableViewPage, movieListType: .tableView)
         
-        group.enter()
-        interactor.retrieveMovieList(query: "Comedy", page: 1, movieListType: .collectionView)
+        group.countedEnter()
+        interactor.retrieveMovieList(query: "Comedy", page: viewModel.collectionViewPage, movieListType: .collectionView)
 
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
@@ -76,6 +79,17 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
     ) {
         router?.routeToMovieDetail(with: viewModel.collectionViewMovieList[indexPath.row])
     }
+    
+    func retrieveMovieList(
+        movieListType: MovieSearchViewModel.MovieListType
+    ) {
+        switch movieListType {
+        case .tableView:
+            interactor.retrieveMovieList(query: "Star", page: viewModel.tableViewPage, movieListType: .tableView)
+        case .collectionView:
+            interactor.retrieveMovieList(query: "Comedy", page: viewModel.collectionViewPage, movieListType: .collectionView)
+        }
+    }
 }
 
 
@@ -88,7 +102,10 @@ extension MovieSearchPresenter: MovieSearchInteractorOutputProtocol {
         movieListType: MovieSearchViewModel.MovieListType,
         didRetrieveMovieList response: MovieListResponse?
     ) {
-        group.leave()
+        if group.getEnterCount() > 0 {
+            group.countedLeave()
+        }
+        viewModel.tableViewPage += 1
         response?.search.forEach({ model in
             let model: MovieEntity = .init(title: model?.title, poster: model?.poster)
             switch movieListType {
@@ -98,6 +115,7 @@ extension MovieSearchPresenter: MovieSearchInteractorOutputProtocol {
                 viewModel.collectionViewMovieList.append(model)
             }
         })
+        view?.configure(with: viewModel)
     }
 
     func movieSearchInteractor(
