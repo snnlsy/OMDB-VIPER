@@ -95,6 +95,10 @@ extension MovieSearchViewController: MovieSearchViewDelegate {
         presenter.didSelectCollectionView(at: indexPath, with: viewModel)
     }
     
+    func movieSearchView(_ view: MovieSearchView, textDidChange searchText: String) {
+        presenter.movieSearchPresenter(textDidChange: searchText)
+    }
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView) {
         presenter.retrieveMovieList(movieListType: .tableView)
     }

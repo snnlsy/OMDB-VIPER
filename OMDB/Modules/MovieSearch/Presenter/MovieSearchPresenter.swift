@@ -23,6 +23,9 @@ protocol MovieSearchPresenterProtocol {
     func retrieveMovieList(
         movieListType: MovieSearchViewModel.MovieListType
     )
+    func movieSearchPresenter(
+        textDidChange searchText: String
+    )
 }
 
 
@@ -54,7 +57,7 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
         view?.configureLayout()
         
         group.countedEnter()
-        interactor.retrieveMovieList(query: "Star", page: viewModel.tableViewPage, movieListType: .tableView)
+        interactor.retrieveMovieList(query: viewModel.query, page: viewModel.tableViewPage, movieListType: .tableView)
         
         group.countedEnter()
         interactor.retrieveMovieList(query: "Comedy", page: viewModel.collectionViewPage, movieListType: .collectionView)
@@ -85,10 +88,17 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
     ) {
         switch movieListType {
         case .tableView:
-            interactor.retrieveMovieList(query: "Star", page: viewModel.tableViewPage, movieListType: .tableView)
+            interactor.retrieveMovieList(query: viewModel.query, page: viewModel.tableViewPage, movieListType: .tableView)
         case .collectionView:
             interactor.retrieveMovieList(query: "Comedy", page: viewModel.collectionViewPage, movieListType: .collectionView)
         }
+    }
+    
+    func movieSearchPresenter(textDidChange searchText: String) {
+        viewModel.query = searchText
+        viewModel.tableViewMovieList = []
+        viewModel.tableViewPage = 1
+        interactor.retrieveMovieList(query: viewModel.query, page: viewModel.tableViewPage, movieListType: .tableView)
     }
 }
 

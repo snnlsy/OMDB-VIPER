@@ -24,6 +24,11 @@ protocol MovieSearchViewDelegate: AnyObject {
         with viewModel: MovieSearchViewModel
     )
     
+    func movieSearchView(
+        _ view: MovieSearchView,
+        textDidChange searchText: String
+    )
+    
     func scrollViewDidEndDragging(
         _ scrollView: UIScrollView
     )
@@ -56,6 +61,7 @@ final class MovieSearchView: UIView {
 
     private lazy var searchBar: UISearchBar = .build { searchBar in
         searchBar.delegate = self
+        searchBar.text = "Star"
     }
     
     private lazy var tableView: UITableView = .build { [weak self] tableView in
@@ -154,7 +160,7 @@ extension MovieSearchView {
 extension MovieSearchView: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        self.delegate?.movieSearchView(self, textDidChange: searchText)
     }
 }
 

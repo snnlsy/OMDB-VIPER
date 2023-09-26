@@ -24,4 +24,6 @@ struct MovieSearchViewModel {
     
     var tableViewPage = 1
     var collectionViewPage = 1
+    
+    var query: String = "Star"
 }
