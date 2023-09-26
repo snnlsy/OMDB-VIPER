@@ -36,10 +36,11 @@ final class MovieSearchPresenter {
     
     weak var view: MovieSearchViewControllerProtocol?
     
-    private var viewModel: MovieSearchViewModel
     var router: MovieSearchRouterProtocol?
     let interactor: MovieSearchInteractorProtocol
-    let group = DispatchGroup()
+    
+    private let group = DispatchGroup()
+    private var viewModel: MovieSearchViewModel
     
     init(interactor: MovieSearchInteractorProtocol) {
         self.interactor = interactor
@@ -77,13 +78,13 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
         case .tableView:
             interactor.retrieveMovieList(
                 query: viewModel.query,
-                page: viewModel.tableViewPage,
+                page: viewModel.page.tableViewPage,
                 movieListType: .tableView
             )
         case .collectionView:
             interactor.retrieveMovieList(
                 query: MovieSearchViewConstant.defaultCollectionViewQuery,
-                page: viewModel.collectionViewPage,
+                page: viewModel.page.collectionViewPage,
                 movieListType: .collectionView
             )
         }
@@ -92,25 +93,28 @@ extension MovieSearchPresenter: MovieSearchPresenterProtocol {
     func movieSearchPresenter(textDidChange searchText: String) {
         viewModel.query = searchText
         viewModel.tableViewMovieList = []
-        viewModel.tableViewPage = 1
-        interactor.retrieveMovieList(query: viewModel.query, page: viewModel.tableViewPage, movieListType: .tableView)
+        viewModel.page = viewModel.page.resetTableViewPage()
+        interactor.retrieveMovieList(
+            query: viewModel.query,
+            page: viewModel.page.tableViewPage,
+            movieListType: .tableView
+        )
     }
     
     private func retrieveInitialMovieList() {
         group.countedEnter()
         interactor.retrieveMovieList(
             query: viewModel.query,
-            page: viewModel.tableViewPage,
+            page: viewModel.page.tableViewPage,
             movieListType: .tableView
         )
-        
         group.countedEnter()
         interactor.retrieveMovieList(
             query: MovieSearchViewConstant.defaultCollectionViewQuery,
-            page: viewModel.collectionViewPage,
+            page: viewModel.page.collectionViewPage,
             movieListType: .collectionView
         )
-
+        
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
             self.view?.configureTableView(with: self.viewModel)
@@ -134,7 +138,11 @@ extension MovieSearchPresenter: MovieSearchInteractorOutputProtocol {
             group.countedLeave()
         }
         response?.search.forEach({ model in
-            let model: MovieEntity = .init(title: model?.title, poster: model?.poster, year: model?.year)
+            let model: MovieEntity = .init(
+                title: model?.title,
+                poster: model?.poster,
+                year: model?.year
+            )
             switch movieListType {
             case .tableView:
                 viewModel.tableViewMovieList.append(model)
@@ -153,10 +161,10 @@ extension MovieSearchPresenter: MovieSearchInteractorOutputProtocol {
     private func configureMovieListViews(movieListType: MovieSearchViewModel.MovieListType) {
         switch movieListType {
         case .tableView:
-            viewModel.tableViewPage += 1
+            viewModel.page = viewModel.page.increaseTableViewPage()
             view?.configureTableView(with: viewModel)
         case .collectionView:
-            viewModel.collectionViewPage += 1
+            viewModel.page = viewModel.page.increaseCollectionViewPage()
             view?.configureCollectionView(with: viewModel)
         }
     }

@@ -11,19 +11,51 @@ import Foundation
 // MARK: - MovieSearchTableViewViewModel
 
 struct MovieSearchViewModel {
-    
-    // TODO: make update
-    
+        
     enum MovieListType {
         case tableView
         case collectionView
     }
     
-    var tableViewMovieList: [MovieEntity] = []
-    var collectionViewMovieList: [MovieEntity] = []
-    
-    var tableViewPage = 1
-    var collectionViewPage = 1
+    struct Page {
+        
+        let tableViewPage: Int
+        let collectionViewPage: Int
+        
+        init(tableViewPage: Int = 1, collectionViewPage: Int = 1) {
+            self.tableViewPage = tableViewPage
+            self.collectionViewPage = collectionViewPage
+        }
+        
+        func resetTableViewPage() -> Self {
+            .init(
+                collectionViewPage: collectionViewPage
+            )
+        }
+        
+        func resetCollectionViewPage() -> Self {
+            .init(
+                tableViewPage: tableViewPage
+            )
+        }
+        
+        func increaseTableViewPage() -> Self {
+            .init(
+                tableViewPage: tableViewPage + 1,
+                collectionViewPage: collectionViewPage
+            )
+        }
+        
+        func increaseCollectionViewPage() -> Self {
+            .init(
+                tableViewPage: tableViewPage,
+                collectionViewPage: collectionViewPage + 1
+            )
+        }
+    }
     
     var query: String = MovieSearchViewConstant.defaultQuery
+    var tableViewMovieList: [MovieEntity] = []
+    var collectionViewMovieList: [MovieEntity] = []
+    var page = Page()
 }
