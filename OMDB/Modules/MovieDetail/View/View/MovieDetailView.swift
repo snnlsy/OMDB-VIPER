@@ -6,56 +6,59 @@
 //
 
 import UIKit
-import SnapKit
+
+// MARK: - MovieDetailView
 
 final class MovieDetailView: UIView {
+        
+    // MARK: - View Components
+
+    var posterImageView: UIImageView = .build()
     
+    let titleLabel: UILabel = .builder()
+        .backgroundColor(.yellow)
+        .build()
+    
+    var yearLabel: UILabel = .build()
+    
+    // MARK: - Initializers
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        setupViewHierarchy()
+        setupViewConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
-    var posterImageView: CacheableImageView = .build()
-    
-    var titleLabel: UILabel = .build { label in
-        label.numberOfLines = 0
-        label.textAlignment = .center
-    }
-    
-    var yearLabel: UILabel = .build()
 }
 
 
+// MARK: - View Configuration
+
 extension MovieDetailView {
     
-    private func setupView() {
-        setupHierarchy()
-        setupLayout()
+    private func setupViewHierarchy() {
+        add(subview: posterImageView)
+        add(subview: titleLabel)
+        add(subview: yearLabel)
     }
     
-    private func setupHierarchy() {
-        addSubview(posterImageView, titleLabel, yearLabel)
-    }
-    
-    private func setupLayout() {
-        posterImageView.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalToSuperview().multipliedBy(0.5)
-            make.center.equalToSuperview()
-        }
-        
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImageView.snp.bottom).offset(Spacing.large)
-            make.horizontalEdges.equalToSuperview().inset(Spacing.large)
-        }
-        
-        yearLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(Spacing.large)
-            make.horizontalEdges.equalToSuperview().inset(Spacing.large)
-        }
+    private func setupViewConstraints() {
+        posterImageView
+            .width(equalTo: width, multiplier: 0.7)
+            .height(equalTo: height, multiplier: 0.5)
+            .centerInSuperview()
+
+        titleLabel
+            .top(equalTo: posterImageView.bottom, constant: Padding.large)
+            .leading(equalTo: leading, constant: Padding.large)
+            .trailing(equalTo: trailing, constant: -Padding.large)
+
+        yearLabel
+            .top(equalTo: titleLabel.bottom, constant: Padding.large)
+            .leading(equalTo: leading, constant: Padding.large)
+            .trailing(equalTo: trailing, constant: -Padding.large)
     }
 }

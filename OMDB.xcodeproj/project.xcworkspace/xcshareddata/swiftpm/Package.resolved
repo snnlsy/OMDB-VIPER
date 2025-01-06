@@ -1,0 +1,59 @@
+{
+  "pins" : [
+    {
+      "identity" : "suimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/snnlsy/SUImage.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f470f4bc0e7650f71ecc558578433f604b00c5aa"
+      }
+    },
+    {
+      "identity" : "sulogger",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/snnlsy/SULogger.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b558150cac13ec6bd1088bf6634496f801d8f76a"
+      }
+    },
+    {
+      "identity" : "sunetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/snnlsy/SUNetworking.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "46a2aa14390245ea5f31a16928a1faad0f8d0deb"
+      }
+    },
+    {
+      "identity" : "suuibuilder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/snnlsy/SUUIBuilder.git",
+      "state" : {
+        "revision" : "a5af91e4892c91ad975788dd678a7a1f84d167dd",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing.git",
+      "state" : {
+        "revision" : "42a086182681cf661f5c47c9b7dc3931de18c6d7",
+        "version" : "1.17.6"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}

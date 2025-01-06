@@ -1,0 +1,23 @@
+{
+  "sourceLanguage" : "tr",
+  "strings" : {
+    "movieList.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Movie List"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Film Listesi"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

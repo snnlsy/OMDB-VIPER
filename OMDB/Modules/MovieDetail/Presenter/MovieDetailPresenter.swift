@@ -5,30 +5,32 @@
 //  Created by Sinan Ulusoy on 23.09.2023.
 //
 
-// MARK: - MovieDetailPresenterProtocol
-
-protocol MovieDetailPresenterProtocol {
-    func viewDidLoad()
-}
-
-
 // MARK: - MovieDetailPresenter
 
 final class MovieDetailPresenter {
     
-    weak var view: MovieDetailViewControllerProtocol?
+    // MARK: - Properties
+
+    weak var view: MovieDetailViewing?
     
-    let movieEntity: MovieEntity
-    
-    init(movieEntity: MovieEntity) {
+    private let movieEntity: MovieEntity
+    private let router: MovieDetailRouting
+
+    // MARK: - Initializers
+
+    init(
+        movieEntity: MovieEntity,
+        router: MovieDetailRouting
+    ) {
         self.movieEntity = movieEntity
+        self.router = router
     }
 }
 
 
-// MARK: - MovieDetailPresenterProtocol Implementation
+// MARK: - MovieDetailPresenting Implementation
 
-extension MovieDetailPresenter: MovieDetailPresenterProtocol {
+extension MovieDetailPresenter: MovieDetailPresenting {
     
     func viewDidLoad() {
         view?.configure(with: movieEntity)

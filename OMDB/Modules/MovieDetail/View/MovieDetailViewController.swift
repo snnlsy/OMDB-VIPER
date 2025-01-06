@@ -7,18 +7,21 @@
 
 import UIKit
 
-// MARK: - MovieDetailViewControllerProtocol
-
-protocol MovieDetailViewControllerProtocol: AnyObject {
-    func configure(with entity: MovieEntity)
-}
-
-
-// MARK: - MovieSearchViewController
+// MARK: - MovieListViewController
 
 final class MovieDetailViewController: UIViewController {
     
-    init(presenter: MovieDetailPresenterProtocol) {
+    // MARK: - Properties
+
+    private let presenter: MovieDetailPresenting
+        
+    private lazy var movieDetailView: MovieDetailView = .builder()
+        .backgroundColor(.systemGray3)
+        .build()
+    
+    // MARK: - Initializers
+
+    init(presenter: MovieDetailPresenting) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,16 +29,10 @@ final class MovieDetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private let presenter: MovieDetailPresenterProtocol
-        
-    private lazy var movieDetailView: MovieDetailView = .build { view in
-        view.backgroundColor = .systemGray3
-    }
 }
 
 
-// MARK: - MovieDetailViewController Lifecycle
+// MARK: - Lifecycle Methods
 
 extension MovieDetailViewController {
 
@@ -50,14 +47,13 @@ extension MovieDetailViewController {
 }
 
 
-// MARK: - MovieDetailViewControllerProtocol Implementation
+// MARK: - MovieDetailViewing Implementation
 
-extension MovieDetailViewController: MovieDetailViewControllerProtocol {
+extension MovieDetailViewController: MovieDetailViewing {
     
     func configure(with entity: MovieEntity) {
-        movieDetailView.posterImageView.setImage(with: entity.poster)
         movieDetailView.titleLabel.text = entity.title
         movieDetailView.yearLabel.text = entity.year
+        movieDetailView.posterImageView.setImage(from: entity.poster)
     }
 }
-

@@ -7,14 +7,25 @@
 
 import UIKit
 
+// MARK: - MovieDetailBuilder
+
 enum MovieDetailBuilder {
     
-    static func build(navigationController: UINavigationController?, movieEntity: MovieEntity) -> UIViewController {
-        let presenter = MovieDetailPresenter(movieEntity: movieEntity)
-        let view = MovieDetailViewController(presenter: presenter)
+    static func build(viewController: UIViewController?, movieEntity: MovieEntity) -> UIViewController {
+        // router
+        let router: MovieDetailRouting = MovieDetailRouter()
         
+        // presenter
+        let presenter: MovieDetailPresenting = MovieDetailPresenter(movieEntity: movieEntity, router: router)
+        
+        // view
+        let view: UIViewController & MovieDetailViewing 
+        view = MovieDetailViewController(presenter: presenter)
+
+        // connections
         presenter.view = view
-        
+        router.viewController = view
+
         return view
     }
 }
